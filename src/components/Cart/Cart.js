@@ -1,9 +1,9 @@
-import React, { useContext, useState } from "react";
-import Modal from "../UI/Modal";
-import classes from "./Cart.module.css";
-import CartContext from "../../store/cart-context";
-import CartItem from "./CartItem";
-import Checkout from "./Checkout";
+import React, { useContext, useState } from 'react';
+import Modal from '../UI/Modal';
+import classes from './Cart.module.css';
+import CartContext from '../../store/cart-context';
+import CartItem from './CartItem';
+import Checkout from './Checkout';
 export default function Cart(props) {
   const [isCheckout, setIsCheckout] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -25,9 +25,9 @@ export default function Cart(props) {
   const submitOrderHandler = async (userData) => {
     setIsSubmitting(true);
     await fetch(
-      "https://react-custom-hooks-7650f-default-rtdb.europe-west1.firebasedatabase.app/orders.json",
+      'https://react-custom-hooks-7650f-default-rtdb.europe-west1.firebasedatabase.app/orders.json',
       {
-        method: "POST",
+        method: 'POST',
         body: JSON.stringify({
           user: userData,
           orderdItems: cartCtx.items,
@@ -40,7 +40,7 @@ export default function Cart(props) {
   };
 
   const cartsItems = (
-    <ul className={classes["cart-items"]}>
+    <ul className={classes['cart-items']}>
       {cartCtx.items.map((item) => (
         <CartItem
           key={item.id}
@@ -56,7 +56,7 @@ export default function Cart(props) {
 
   const modalActions = (
     <div className={classes.actions}>
-      <button className={classes["button--alt"]} onClick={props.onClose}>
+      <button className={classes['button--alt']} onClick={props.onClose}>
         Close
       </button>
       {hasItems && (
